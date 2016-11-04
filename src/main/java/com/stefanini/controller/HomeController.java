@@ -13,7 +13,7 @@ import com.stefanini.model.Hello;
 
 @Path("/home")
 @RequestScoped
-public class HomeControler {
+public class HomeController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
