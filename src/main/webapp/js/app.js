@@ -1,13 +1,25 @@
-var app = angular.module('app', [ 'ngRoute', 'controllers','factorys' ]);
+var App = angular.module('App', [
+'ngRoute',
+'controllers',
+'services'
+]);
 
-app.config([ '$routeProvider', function($routeProvider) {
-	$routeProvider.when('/', {
-		templateUrl : 'partials/home.html',
-		controller : 'HomeController'
-	}).when('/listarDenuncias', {
-		templateUrl : 'partials/denuncias.html',
-		controller : 'DenunciaController'
-	}).otherwise({
-		redirectTo : '/'
-	});
-} ]);
+App.config(function($routeProvider){
+	$routeProvider
+	.when('/', {
+		templateUrl: 'views/read.html',
+		controller: 'ReadCtrl'
+	})
+
+	.when('/create', {
+		templateUrl: 'views/create.html',
+		controller: 'CreateCtrl'
+	})
+
+	.when('/edit/:id', {
+		templateUrl: 'views/edit.html',
+		controller: 'EditCtrl'
+	})
+});
+
+App.value('API', 'http://localhost:8080/angular-app/service/');
