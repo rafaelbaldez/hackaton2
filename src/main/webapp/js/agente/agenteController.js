@@ -1,5 +1,7 @@
-App.controller('AgenteCtrl', function($scope, AgenteService, $route,$routeParams,$location){
+App.controller('AgenteCtrl', function($scope, AgenteService, $route,$routeParams,$location,EnvioService){
 	$scope.agente = [];
+	$scope.agenteEditar = {};
+
 	$scope.notFound = false;
 	AgenteService.list().then(function(data){
 		$scope.agente = data.data;
@@ -9,7 +11,8 @@ App.controller('AgenteCtrl', function($scope, AgenteService, $route,$routeParams
 	},function(data){
 		console.log("data", data);
 	});
-
+	$scope.agenteEditar = EnvioService.getParametro();
+	
 	$scope.deletar = function(id){
 		AgenteService.delete(id).then(function(data){
 			console.log(data);
@@ -17,10 +20,9 @@ App.controller('AgenteCtrl', function($scope, AgenteService, $route,$routeParams
 		});	
 	}
 	
-	$scope.item = {};
-	
 	$scope.editar = function(item){
-		$scope.item = item;
+		$scope.agenteEditar = {};
+		EnvioService.addParametro(item);
 		$location.path('/editarAgente');
 	}
 
