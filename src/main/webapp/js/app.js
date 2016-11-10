@@ -22,4 +22,4 @@ App.config(function($routeProvider){
 	})
 });
 
-App.value('API', 'http://localhost:8080/angular-app/service/');
+App.value('API', 'http://localhost:8081/angular-app/service/');
